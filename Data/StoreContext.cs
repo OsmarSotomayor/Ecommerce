@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Data.Sqlite;
 namespace API_ECOMMERCE
 {
      public class StoreContext: DbContext
@@ -8,6 +8,7 @@ namespace API_ECOMMERCE
         base(options)
         {
 
+         
         }
 
         public DbSet<Product> Products { get; set; } //Products sera el nombre que se le dara en BBD
