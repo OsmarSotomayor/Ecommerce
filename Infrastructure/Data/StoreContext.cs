@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
-namespace API_ECOMMERCE
+using Core;
+namespace Infrastructure
 {
      public class StoreContext: DbContext
      {

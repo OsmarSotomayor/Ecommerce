@@ -1,4 +1,4 @@
-namespace API_ECOMMERCE
+namespace Core
 {
      public class Product
      {
