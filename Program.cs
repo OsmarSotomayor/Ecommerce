@@ -1,4 +1,6 @@
+using Core.interfaces;
 using Infrastructure;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,10 @@ builder.Services.AddDbContext<StoreContext>(opt =>
     GetConnectionString("DefaultConnection"));
 });
 
+//Implementamos el servicio para usar la interface
+//AddScope es lo que indica cuando "vivira el servicio"
+builder.Services.
+AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
