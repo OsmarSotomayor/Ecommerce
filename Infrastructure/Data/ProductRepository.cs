@@ -1,18 +1,25 @@
 using Core;
 using Core.interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
     public class ProductRepository : IProductRepository
     {
-        public Task<Product> GetProductByIdAsync(int id)
-        {
-            throw new NotImplementedException();
+        private readonly StoreContext context;
+
+        public ProductRepository(StoreContext context){
+            this.context = context;
         }
 
-        public Task<IReadOnlyList<Product>> GetProductsAsync(int id)
+        public async Task<Product> GetProductByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await context.Products.FindAsync(id);
+        }
+
+        public async Task<IReadOnlyList<Product>> GetProductsAsync()
+        {
+            return await context.Products.ToListAsync();
         }
     }
 
