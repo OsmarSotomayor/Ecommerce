@@ -14,6 +14,8 @@ namespace Infrastructure
 
         public DbSet<Product> Products { get; set; } //Products sera el nombre que se le dara en BBD
         
-
+        public DbSet<ProductBrand> ProductBrands { get; set; }
+        
+        public DbSet<ProductType> ProductTypes { get; set; }
      }
 }
