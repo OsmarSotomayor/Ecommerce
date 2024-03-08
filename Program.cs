@@ -37,4 +37,20 @@ app.UseAuthorization();
 
 app.MapControllers(); //Esta linea nos permite ligar los endpoints con los controladores
 
+//nos ayuda a inyectar nuevos servicios 
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+var context = services.GetRequiredService<StoreContext>();
+var logger = services.GetRequiredService<ILogger<Program>>();
+
+try
+{
+    await context.Database.MigrateAsync();
+    await StoreContextSeed.SeedAsync(context);
+}
+catch (Exception ex)
+{
+    logger.LogError(ex, "An error occured during migration");
+}
+
 app.Run();

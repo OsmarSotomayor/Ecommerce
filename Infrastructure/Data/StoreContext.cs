@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
 using Core;
+using System.Reflection;
+using Infrastructure.Data.Config;
 namespace Infrastructure
 {
      public class StoreContext: DbContext
@@ -17,5 +19,12 @@ namespace Infrastructure
         public DbSet<ProductBrand> ProductBrands { get; set; }
         
         public DbSet<ProductType> ProductTypes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder){
+         
+         base.OnModelCreating(modelBuilder);
+
+         modelBuilder.ApplyConfiguration(new ProductConfig());
+        }
      }
 }

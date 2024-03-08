@@ -144,3 +144,6 @@ c:\Users\PC ONE\Ecommerce\obj\Debug\net7.0\refint\API.dll
 c:\Users\PC ONE\Ecommerce\obj\Debug\net7.0\API.pdb
 c:\Users\PC ONE\Ecommerce\obj\Debug\net7.0\API.genruntimeconfig.cache
 c:\Users\PC ONE\Ecommerce\obj\Debug\net7.0\ref\API.dll
+C:\Users\PC ONE\Ecommerce\bin\Debug\net7.0\Infrastructure\Data\SeedData\brands.json
+C:\Users\PC ONE\Ecommerce\bin\Debug\net7.0\Infrastructure\Data\SeedData\products.json
+C:\Users\PC ONE\Ecommerce\bin\Debug\net7.0\Infrastructure\Data\SeedData\types.json
