@@ -7,5 +7,9 @@ namespace Core.interfaces
 
         //IReadOnlyList es un tipo de lista mas especifica pues
         // solo nos permitira leer el contenido
+
+        Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync();
+
+        Task<IReadOnlyList<ProductType>> GetProductTypesAsync();
     } 
 }

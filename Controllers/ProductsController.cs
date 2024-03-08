@@ -31,6 +31,20 @@ namespace API.Controllers
         {
             return await repository.GetProductByIdAsync(id);
         }
+
+        [HttpGet("brands")] //Sin el ok este metodo daria error
+        public async Task<ActionResult<IReadOnlyList<ProductBrand>>> getProductBrands(){
+           return Ok(await repository.GetProductBrandsAsync());
+        } 
+        //Aunque es una lista tipo generica es necesario el Ok
+
+        [HttpGet("types")] 
+        public async Task<ActionResult<IReadOnlyList<ProductType>>> getProductTypes(){
+           return Ok(await repository.GetProductTypesAsync());
+        }
+        
+
+        
     }
  }
 
