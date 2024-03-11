@@ -12,39 +12,46 @@ namespace API.Controllers
     [Route("api/[controller]")] //https://localhost:5001/Products
     public class ProductsController: ControllerBase
     {
-        private readonly IProductRepository repository;
+        private readonly IGenericRepository<Product> productRepo;
+        private readonly IGenericRepository<ProductBrand> productBrandRepo;
+        private readonly IGenericRepository<ProductType> productTypeRepo;
 
-        public ProductsController(IProductRepository repository)
+        public ProductsController(IGenericRepository<Product> productRepo,
+        IGenericRepository<ProductBrand> productBrandRepo,
+        IGenericRepository<ProductType> productTypeRepo)
         {
-            this.repository = repository;
+            this.productRepo = productRepo;
+            this.productBrandRepo = productBrandRepo;
+            this.productTypeRepo = productTypeRepo;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Product>>> getProducts()
         {
-            var products = await repository.GetProductsAsync();
+            var products = await productRepo.ListAllAsync();
             return Ok(products);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> getProduct(int id)
         {
-            return await repository.GetProductByIdAsync(id);
+            return await productRepo.GetByIdAsyncId(id);
         }
 
         [HttpGet("brands")] //Sin el ok este metodo daria error
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> getProductBrands(){
-           return Ok(await repository.GetProductBrandsAsync());
+
+           return Ok(await productBrandRepo.ListAllAsync());
         } 
         //Aunque es una lista tipo generica es necesario el Ok
 
         [HttpGet("types")] 
         public async Task<ActionResult<IReadOnlyList<ProductType>>> getProductTypes(){
-           return Ok(await repository.GetProductTypesAsync());
-        }
-        
 
-        
+           return Ok(await productTypeRepo.ListAllAsync());
+
+        }
+               
     }
  }
 
