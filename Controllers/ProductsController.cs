@@ -1,5 +1,6 @@
 using Core;
 using Core.interfaces;
+using Core.Specifications;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +29,10 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Product>>> getProducts()
         {
-            var products = await productRepo.ListAllAsync();
+            var specification = new ProductsWithTypesAndBrandsSpecification();
+            //Con sppecification tenemos ya un nombre significativo que nos dic que buscamos
+
+            var products = await productRepo.listAsync(specification);
             return Ok(products);
         }
 
@@ -50,8 +54,7 @@ namespace API.Controllers
 
            return Ok(await productTypeRepo.ListAllAsync());
 
-        }
-               
+        }         
     }
  }
 
