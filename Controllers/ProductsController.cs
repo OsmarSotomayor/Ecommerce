@@ -39,7 +39,10 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> getProduct(int id)
         {
-            return await productRepo.GetByIdAsyncId(id);
+            //En esta specification llamamos al constructor con parametro id
+            var specification = new ProductsWithTypesAndBrandsSpecification(id);
+ 
+            return await productRepo.GetEntityWithSpec(specification);
         }
 
         [HttpGet("brands")] //Sin el ok este metodo daria error
@@ -48,12 +51,10 @@ namespace API.Controllers
            return Ok(await productBrandRepo.ListAllAsync());
         } 
         //Aunque es una lista tipo generica es necesario el Ok
-
+        
         [HttpGet("types")] 
         public async Task<ActionResult<IReadOnlyList<ProductType>>> getProductTypes(){
-
            return Ok(await productTypeRepo.ListAllAsync());
-
         }         
     }
  }
