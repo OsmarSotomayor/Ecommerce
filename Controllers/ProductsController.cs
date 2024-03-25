@@ -1,3 +1,4 @@
+using API.Dtos;
 using Core;
 using Core.interfaces;
 using Core.Specifications;
@@ -27,22 +28,41 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> getProducts()
+        public async Task<ActionResult<List<ProductsToReturnDTO>>> getProducts()
         {
             var specification = new ProductsWithTypesAndBrandsSpecification();
-            //Con sppecification tenemos ya un nombre significativo que nos dic que buscamos
-
+        
             var products = await productRepo.listAsync(specification);
-            return Ok(products);
+            
+            return products.Select(product => new ProductsToReturnDTO
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.description,
+                PictureUrl = product.PictureUrl,
+                Price = product.Price,
+                ProductBrand = product.ProductBrand.Name,
+                ProductType = product.ProductType.Name
+            }).ToList();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> getProduct(int id)
+        public async Task<ActionResult<ProductsToReturnDTO>> getProduct(int id)
         {
-            //En esta specification llamamos al constructor con parametro id
             var specification = new ProductsWithTypesAndBrandsSpecification(id);
  
-            return await productRepo.GetEntityWithSpec(specification);
+            var product =  await productRepo.GetEntityWithSpec(specification);
+
+            return new ProductsToReturnDTO
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.description,
+                PictureUrl = product.PictureUrl,
+                Price = product.Price,
+                ProductBrand = product.ProductBrand.Name,
+                ProductType = product.ProductType.Name
+            };
         }
 
         [HttpGet("brands")] //Sin el ok este metodo daria error
