@@ -25,6 +25,11 @@ AddScoped<IProductRepository, ProductRepository>();
 builder.Services.
 AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+//Para automapper
+//Registrara los mapping profiles cuando inicie la aplicacion
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

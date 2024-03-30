@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "xFSzmlc2RAotJ7TFoBz734jgyh9LOHDNA6OhO/J1KvF1scyCp3s7HtjWCT1esj8YpijPc2kcDQZ9MRcpB/zWPg==",
+  "dgSpecHash": "MxF9l54Q8wIQDODlYG+iAMLv4BoWbCan4OLSN7vrGgg2rYrclwD6unXcBQ7/RQzIkRd8W9OCaQooK5VzkB5M1g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC ONE\\API_Ecommerce\\Infrastructure\\Infrastructure.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "c:\\Users\\PC ONE\\Ecommerce\\Infrastructure\\Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PC ONE\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\PC ONE\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\PC ONE\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\PC ONE\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\PC ONE\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\PC ONE\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\PC ONE\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
