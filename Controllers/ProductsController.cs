@@ -31,29 +31,20 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductsToReturnDTO>>> getProducts()
+        public async Task<ActionResult<IReadOnlyList<ProductsToReturnDTO>>> getProducts()
         {
             var specification = new ProductsWithTypesAndBrandsSpecification();
         
             var products = await productRepo.listAsync(specification);
             
-            return products.Select(product => new ProductsToReturnDTO
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Description = product.description,
-                PictureUrl = product.PictureUrl,
-                Price = product.Price,
-                ProductBrand = product.ProductBrand.Name,
-                ProductType = product.ProductType.Name
-            }).ToList();
+            return Ok(mapper.Map<IReadOnlyList<Product>, 
+            IReadOnlyList<ProductsToReturnDTO>>(products));
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductsToReturnDTO>> getProduct(int id)
         {
             var specification = new ProductsWithTypesAndBrandsSpecification(id);
- 
             var product =  await productRepo.GetEntityWithSpec(specification);
             
             //devolvemos el producto con automaper

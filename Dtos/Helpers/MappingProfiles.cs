@@ -1,4 +1,3 @@
-
 using AutoMapper;
 using Core;
 
@@ -11,10 +10,11 @@ namespace API.Dtos
             //Mapeamos de la entidad a el DTO
             //se mapearan las propiedades de Product en 
             // ProductsToReturnDTO
-            CreateMap<Product, ProductsToReturnDTO>();
-            
+            CreateMap<Product, ProductsToReturnDTO>()
+            .ForMember(d => d.ProductBrand, f => 
+            f.MapFrom(s => s.ProductBrand.Name))
+            .ForMember(d => d.ProductType, f => 
+            f.MapFrom(s => s.ProductType.Name)); 
         }
-
     }
-
 }
