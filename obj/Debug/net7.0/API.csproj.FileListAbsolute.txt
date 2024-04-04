@@ -149,3 +149,4 @@ C:\Users\PC ONE\Ecommerce\bin\Debug\net7.0\Infrastructure\Data\SeedData\products
 C:\Users\PC ONE\Ecommerce\bin\Debug\net7.0\Infrastructure\Data\SeedData\types.json
 C:\Users\PC ONE\Ecommerce\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\PC ONE\Ecommerce\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\PC ONE\Ecommerce\bin\Debug\net7.0\API.staticwebassets.runtime.json

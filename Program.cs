@@ -39,8 +39,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection(); causara warnings no necesarios para el proyecto
+//para agregar contenido estatico como imagenes
+app.UseStaticFiles();
 
+//app.UseHttpsRedirection(); causara warnings no necesarios para el proyecto
 app.UseAuthorization();
 
 app.MapControllers(); //Esta linea nos permite ligar los endpoints con los controladores
