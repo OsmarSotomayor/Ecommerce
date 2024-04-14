@@ -9,11 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    //Nuestro controlador no necesitara alguna vista como soporte pues eso
-    //sera proporcionado por Angular 
-    [ApiController] //agregarmos el atributo ApiController porque lo general mejora el código para escribir menos
-    [Route("api/[controller]")] //https://localhost:5001/Products
-    public class ProductsController: ControllerBase
+
+    public class ProductsController: BaseApiController
     {
         private readonly IGenericRepository<Product> productRepo;
         private readonly IGenericRepository<ProductBrand> productBrandRepo;
