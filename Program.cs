@@ -1,3 +1,4 @@
+using API.Middleware;
 using Core.interfaces;
 using Infrastructure;
 using Infrastructure.Data;
@@ -33,6 +34,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleware>();
 
 //para redirigirlos a nuestro controlador de errores 
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
