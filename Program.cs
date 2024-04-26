@@ -1,7 +1,9 @@
+using API.Errors;
 using API.Middleware;
 using Core.interfaces;
 using Infrastructure;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +32,24 @@ AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 //Registrara los mapping profiles cuando inicie la aplicacion
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+//Improving the validation error response
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = ActionContext =>
+    {
+        var errors = ActionContext.ModelState
+        .Where(e => e.Value.Errors.Count > 0)
+        .SelectMany(x => x.Value.Errors)
+        .Select(x => x.ErrorMessage).ToArray();
+
+        var errorResponse = new ApiValidationErrorResponse
+        {
+            Errors = errors
+        };
+
+        return new BadRequestObjectResult(errorResponse);
+    };
+});
 
 var app = builder.Build();
 
@@ -39,11 +59,10 @@ app.UseMiddleware<ExceptionMiddleware>();
 //para redirigirlos a nuestro controlador de errores 
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 //para agregar contenido estatico como imagenes
 app.UseStaticFiles();
